@@ -4,7 +4,42 @@ Your function should return a count of how many occurences of ***"th"*** occur w
 Your function must utilize recursion. It cannot contain any loops.
 '''
 def count_th(word):
+
+    # append counter to the end of the word
+    try:
+        int(word[len(word) - 1])
+    except:
+        word = word + str(0)
     
-    # TBC
+    # base case
+    try:
+        int(word)
+        return int(word)
+    except:
+        pass
+        
+    if word[0:2] == "th":
+        # If the first two characters of the word is "th",
+        # then remove from the word and increase the count
+        count = 0
+        int_start_index = 0
+
+        # Get the count part of the word and increament
+        for i in reversed(range(len(word))):
+            try:
+                int(word[i])
+            except:
+                count = int(word[i+1:])
+                int_start_index = i + 1
+                break
+
+        count += 1
+        return count_th(word[2:int_start_index] + str(count))
+    else:
+        # If the first two character of the word is not "th",
+        # then remove the first character from the word
+        return count_th(word[1:])
     
-    pass
+
+    
+print(count_th("asthahtasth"))
