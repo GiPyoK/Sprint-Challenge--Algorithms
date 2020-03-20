@@ -25,7 +25,7 @@ b)
     For loop iterates n times, while loop iterates log n times
     Therefore n * log n
 
-    Answer: O(nlog(n))
+    Answer: O(n log n)
 
 
 c)
@@ -41,5 +41,27 @@ c)
     Answer: O(n)
 
 ## Exercise II
+Suppose that you have an n-story building and plenty of eggs. Suppose also that an egg gets broken if it is thrown off floor f or higher, and doesn't get broken if dropped off a floor less than floor f. Devise a strategy to determine the value of f such that the number of dropped + broken eggs is minimized.
 
+Write out your proposed algorithm in plain English or pseudocode AND give the runtime complexity of your solution.
+
+
+Given n floors, get referent to the start of n floors and end to the n floors
+
+Drop the egg at n/2th floor and observe the result
+
+If the egg breaks, 
+
+    Drop the egg at n/2 - 1 th floor and observe the result
+
+    If the egg does not break, then n/2th floor is the floor f
+
+    If the egg breaks, only consider bottom half of the floors. end = n/2
+
+If the egg does not break, only consider top half of the floors. start = n/2
+
+repeat this process recursively until floor f is found.
+
+
+complexity: O(log n)
 
